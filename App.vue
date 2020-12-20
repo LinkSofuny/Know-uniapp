@@ -21,4 +21,9 @@
 	@import url("./common/free.css");
 	/* 引入全局样式 */
 	@import url("./common/common.css");
+	/* 引入图标库 */
+	@import url("./common/icon.css");
+	/* 动画库 */
+	@import url("./common/animate.min.css");
+	
 </style>

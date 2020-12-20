@@ -291,7 +291,7 @@
 .text-light-white { color: rgba(255, 255, 255, 0.5);}
 
 /* 背景颜色 */
-.bg-primary { background-color: #007bff;}
+.bg-primary { background-color: #87ceeb;}
 .bg-hover-primary:hover{ background-color: #0062cc;}
 .bg-secondary { background-color: #6c757d;}
 .bg-hover-secondary:hover{ background-color: #545b62;}

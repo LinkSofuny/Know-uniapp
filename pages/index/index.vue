@@ -1,9 +1,19 @@
 <template>
 	<view>
-		<view class="flex justify-center">
-			<view class="">1</view>
-			<view class="">2</view>
-		</view>
+		<!-- 仅在小程序端显示 -->
+		<!-- #ifdef MP -->
+			<!-- 导航栏wx -->
+			<view class="flex align-center p-1 mx-1 fixed-bottom" style="height: 44px;">
+				<!-- 搜索框 -->
+				<view class="flex align-center flex-1 rounded-circle py-1 px-1 mx-2" style="background: #F6F7F8; color: #959fA0;">
+					<text class="iconfont iconsousuokuang"></text>
+					<text>输入点什么吧</text>
+				</view>
+				<view class=" align-center flex" style="color: #959fA0;">
+					分类
+				</view>
+			</view>
+		<!-- #endif -->
 	</view>
 </template>
 
@@ -16,6 +26,13 @@
 		},
 		onLoad() {
 
+		},
+		onNavigationBarSearchInputClicked() {
+			console.log('导航栏监听')
+			
+		},
+		onNavigationBarButtonTap(e) {
+			console.log('分类按钮监听')
 		},
 		methods: {
 

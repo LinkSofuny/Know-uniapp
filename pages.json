@@ -3,14 +3,79 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "首页",
+				"app-plus": {
+					"titleNView": {
+						"padding": "8px",
+						"searchInput": {
+							"align": "left",
+							"backgroundColor":"#F6F7F8",
+							"placeholder":"输入点什么吧",
+							"disabled":true,
+							"borderRadius":"15px",
+							"placeholderColor":"#959fA0"
+						},
+						"buttons":[{
+							"float":"right",
+							"color":"#959fA0",
+							"text": "分类 ",
+							"fontSize":"16px",
+							"colorPressed":"#87ceeb"
+						}]
+					}
+				}
 			}
 		}
-	],
+        ,{
+            "path" : "pages/cate/cate",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "分类",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/my/my",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"navigationBarTitleText": "LinkKnow",
+		"navigationBarBackgroundColor": "#FFFFFF",
+		"backgroundColor": "#FFFFFF"
+	},
+	"tabBar": {
+		"borderStyle": "black",
+		"selectedColor": "#87ceeb",
+		"color": "#2c2c2c",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"selectedIconPath": "static/tabbar/shouyeSelected.png",
+				"iconPath":"static/tabbar/shouye.png",
+				"text": "首页"
+			 },
+			{
+				"pagePath": "pages/cate/cate",
+				"selectedIconPath": "static/tabbar/categoriesSelected.png",
+				"iconPath": "static/tabbar/categories.png",
+				"text": "分类"
+			 },
+			{
+				"pagePath": "pages/my/my",
+				"selectedIconPath": "static/tabbar/mySelected.png",
+				"iconPath":"static/tabbar/my.png",
+				"text": "我的"
+			 }
+		
+		]
+		
 	}
 }
