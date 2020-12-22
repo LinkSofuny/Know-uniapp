@@ -38,7 +38,7 @@
 				 style="width:100%"
 				 v-for="i in 6" :key="i">
 					<image 
-					src="../../static/demo/list2/2.jpg" 
+					src="/static/demo/list2/2.jpg" 
 					style="width: 260rpx; height: 160rpx;"
 					class="rounded-lg mr-2 fls"></image>
 					<view class="flex-1 flex flex-column justify-between" style="height: 100%;">

@@ -26,21 +26,78 @@
 				}
 			}
 		}
+		,{
+		    "path" : "pages/my/my",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "",
+				"app-plus": {
+					"titleNView": {
+						"padding": "8px",
+						"buttons": [
+							{
+								"float":"right",
+								"color":"#959fA0",
+								"fontSize":"25px",
+								"colorPressed":"#87ceeb",
+								// 引入字体图标 去要先fontsrc 引入ttf文件
+								// text: 使用unicode码 将&#x 改成 \u
+								"fontSrc": "/static/iconfont.ttf",
+								"text": "\ue695"
+							},
+							{
+								"float":"right",
+								"color":"#959fA0",
+								"fontSize":"25px",
+								"colorPressed":"#87ceeb",
+								"fontSrc":"/static/iconfont.ttf",
+								"text": "\ue61a"
+							}
+						]
+					}
+				}
+		    }
+		    
+		}
+		,{
+		    "path" : "pages/cate/cate", // 分类页
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "分类",
+		        "enablePullDownRefresh": false,
+				"app-plus": {
+					"titleNView": {
+						"padding": "8px",
+						"searchInput": {
+							"align": "left",
+							"backgroundColor":"#F6F7F8",
+							"placeholder":"输入点什么吧",
+							"disabled":true,
+							"borderRadius":"15px",
+							"placeholderColor":"#959fA0"
+						}
+					}
+				}
+		    }
+		    
+		}
         ,{
-            "path" : "pages/cate/cate",
+            "path" : "pages/create/create",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "分类",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/my/my",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "我的",
-                "enablePullDownRefresh": false
+				"navigationBarTitleText": "发布作品",
+				"app-plus": {
+					"titleNView": {
+						"padding-right": "10px",
+						"buttons": [{
+							"float":"right",
+							"color":"#87ceeb",
+							"colorPressed":"#87ceeb",
+							"fontSize": "20px",
+							"text": "发布"
+						}]
+					}
+				}
             }
             
         }

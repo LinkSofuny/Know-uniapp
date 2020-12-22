@@ -12,7 +12,7 @@
 				换一批
 			</view>
 		</view>
-		<view class="f-divider">
+		<view class="f-divider" v-if="showGap" >
 		</view>
 	</view>
 </template>
@@ -21,6 +21,10 @@
 	export default {
 		props: {
 			showRefresh: {
+				type: Boolean,
+				default: true
+			},
+			showGap: {
 				type: Boolean,
 				default: true
 			},
