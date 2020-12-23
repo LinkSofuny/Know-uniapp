@@ -34,32 +34,7 @@
 		<!-- 列表样式3 -->
 		<recom-card title="为你推荐">
 			<view class="f-list">
-				<view class="flex align-center py-2 border-bottom"
-				 style="width:100%"
-				 v-for="i in 6" :key="i">
-					<image 
-					src="/static/demo/list2/2.jpg" 
-					style="width: 260rpx; height: 160rpx;"
-					class="rounded-lg mr-2 fls"></image>
-					<view class="flex-1 flex flex-column justify-between" style="height: 100%;">
-						<text class="font" style="line-height: 1.2;">
-							标题标题标题标题标题标题标题标题标题标题
-						</text>
-						<text class="font-sm text-light-muted mt-auto">今日10:20</text>
-						<view class="flex align-center text-light-muted justify-between line-h">
-							<view class="line-h">
-								<text class="iconfont iconbofangshu mr-1 font-md"></text>
-								<text class="font-sm">206.4万</text>
-							</view>
-							<view class="line-h">
-								<text class="iconfont icondanmushu mr-1 font-md"></text>
-								<text class="font-sm">5524</text>						
-							</view>
-							<!-- flex布局下 给margin-left: auto的话 该元素会挪到父元素的最右边 -->
-							<text class="iconfont icongengduo "></text>
-						</view>
-					</view>
-				</view>
+				<media-list v-for="( item, index ) in list3" :key="index" :item="item" :index="index"></media-list>
 			</view>
 		</recom-card>
 		<!-- 推荐栏 -->
@@ -110,14 +85,13 @@
 				</view>
 			</view>
 		</recom-card>
-
-
 	</view>
 </template>
 
 <script>
 	import swiperDot from "@/components/common/SwiperDot.vue"
 	import recomCard from '@/components/common/RecommodationCard.vue'
+	import mediaList from "@/components/common/MediaList.vue"
 	export default {
 		data() {
 			return {
@@ -129,12 +103,36 @@
 					title: "啊啊啊啊啊啊啊啊啊2"},
 					{src: "../../static/demo/swiper/3.jpg",
 					title: "啊啊啊啊啊啊啊啊啊3"}
+				],
+				list3: [
+					{
+						cover: "/static/demo/list2/2.jpg",
+						title: "标题标题标题标题标题标题标题标题标题标题",
+						createTime: "今日10:20",
+						playCount: 0,
+						danmuCount: 0,
+					},
+					{
+						cover: "/static/demo/list2/2.jpg",
+						title: "标题标题标题标题标题标题标题标题标题标题",
+						createTime: "今日10:20",
+						playCount: 0,
+						danmuCount: 0,
+					},
+					{
+						cover: "/static/demo/list2/2.jpg",
+						title: "标题标题标题标题标题标题标题标题标题标题",
+						createTime: "今日10:20",
+						playCount: 0,
+						danmuCount: 0,
+					}
 				]
 			}
 		},
 		components: {
 			swiperDot,
-			recomCard
+			recomCard,
+			mediaList
 		},
 		onLoad() {
 

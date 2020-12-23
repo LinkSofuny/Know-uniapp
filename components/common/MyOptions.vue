@@ -2,6 +2,7 @@
 	<view
 	class="px-3 py-2 flex align-center"
 	hover-class="bg-light"
+	@click="$emit('click')"
 	>
 		<text v-if="icon"  :class="icon" class="iconfont font"></text>
 		<view class="ml-2 font-md font-weight-light mr-auto">

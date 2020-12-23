@@ -18,10 +18,10 @@
 		<view class="f-divider"></view>
 		
 		<!-- 选项部分 -->
-		<my-options icon="iconshipin" title="我的作品" :showRightIcon="false" rightText="26个"></my-options>
-		<my-options icon="iconshoucang1" title="我的收藏" ></my-options>
-		<my-options icon="iconguanzhu" title="关注"  rightText="365"></my-options>
-		<my-options icon="iconlishi" title="历史记录" ></my-options>
+		<my-options @click="navigateTo('userWork')" icon="iconshipin" title="我的作品" :showRightIcon="false" rightText="26个"></my-options>
+		<my-options @click="navigateTo('userFava')" icon="iconshoucang1" title="我的收藏" ></my-options>
+		<my-options  icon="iconguanzhu" title="关注"  rightText="365"></my-options>
+		<my-options  icon="iconlishi" title="历史记录" ></my-options>
 		<view class="f-divider"></view>
 		<!-- 投稿 -->
 		<view class="py-3 px-2">
@@ -34,7 +34,7 @@
 				<view class="flex-1 flex justify-center align-center flex-column"
 				 style="height: 100%;"
 				 hover-class="bg-light"
-				 @click="openCreate">
+				 @click="navigateTo('create')">
 					<text class="iconfont icondingdanwenjian bg-deliver-single text-white rounded-circle flex justify-center align-center" style="height: 80rpx; width: 80rpx;"></text>
 					<view class="font text-muted">
 						单集
@@ -75,9 +75,9 @@
 			deliverWork() {
 				this.show = true
 			},
-			openCreate() {
+			navigateTo(path) {
 				uni.navigateTo({
-					url: '../create/create',
+					url: '/pages/' + path + '/' + path ,
 				})
 			},
 			...mapMutations('popupStatues', ['isShow', 'noShow'])
