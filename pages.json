@@ -93,7 +93,7 @@
 							"float":"right",
 							"color":"#87ceeb",
 							"colorPressed":"#87ceeb",
-							"fontSize": "20px",
+							"fontSize": "16px",
 							"text": "发布"
 						}]
 					}
