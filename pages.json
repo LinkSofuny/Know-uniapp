@@ -123,6 +123,37 @@
             }
             
         }
+        ,{
+            "path" : "pages/login/login",
+            "style" :                                                                                    
+            {
+				"enablePullDownRefresh": false,
+				"app-plus": {
+					"titleNView": false
+				}
+            }
+            
+        }
+        ,{
+            "path" : "pages/userPage/userPage",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"app-plus": {
+					"titleNView": {
+						"padding": "8px",
+						"type": "transparent",
+						"buttons": [{
+							"float":"right",
+							"type":"menu"
+							
+						}]
+					}
+				}
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

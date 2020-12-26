@@ -1,20 +1,22 @@
 <template>
 	<view>
-		<view class="p-3 flex align-center">
-			<image 
-			src="../../static/demo/6.jpg" 
-			style="height: 120rpx;width: 120rpx;"
-			class="rounded-circle bg-light flex-shrink"></image>
-			<view class="flex flex-column ml-3 flex-1">
-				<view class="font-md text-dark">
-					Link 
-					<text class="font-sm text-light-muted ml-2">男 广东</text>
+		<navigator url="../userPage/userPage">
+			<view class="p-3 flex align-center">
+				<image 
+				src="../../static/demo/6.jpg" 
+				style="height: 120rpx;width: 120rpx;"
+				class="rounded-circle bg-light flex-shrink"></image>
+				<view class="flex flex-column ml-3 flex-1">
+					<view class="font-md text-dark">
+						Link 
+						<text class="font-sm text-light-muted ml-2">男 广东</text>
+					</view>
+					<text class=" font text-muted">
+						我是傻逼
+					</text>
 				</view>
-				<text class=" font text-muted">
-					我是傻逼
-				</text>
 			</view>
-		</view>
+		</navigator>
 		<view class="f-divider"></view>
 		
 		<!-- 选项部分 -->
