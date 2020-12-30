@@ -4,11 +4,12 @@
 		<view class="position-fixed top-0 left-0 right-0 bottom-0 animated faster fadeIn "
 		style="background: rgba(0, 0, 0, 0.5);"
 		v-if="show"
-		@click.stop="noShow">
+		@click.stop="$emit('click')">
 		<!-- 弹框 -->
 			<view
 			 class="position-absolute left-0 right-0 bottom-0 bg-white animated faster fadeIn "
-			 style="height: 320rpx; z-index: 1000;">
+			 style="z-index: 1000;"
+			 :sytle="'height:'+ popupHeight + 'rpx;'">
 				<slot></slot>	
 			</view>
 		</view>
@@ -16,17 +17,24 @@
 </template>
 
 <script>
-	import { mapState, mapMutations } from 'vuex'
 	export default {
+		props: {
+			show: {
+				type: Boolean,
+				default: false
+			},
+			popupHeight: {
+				type: Number,
+				default: 320
+			}
+		},
 		data () {
 			return {
 			}
 		},
 		methods: {
-			...mapMutations('popupStatues', ['noShow'])
 		},
 		computed: {
-			...mapState('popupStatues',['show'])
 		}
 	}
 </script>

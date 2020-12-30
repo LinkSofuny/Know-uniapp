@@ -123,6 +123,7 @@
             }
             
         }
+		// 登录页
         ,{
             "path" : "pages/login/login",
             "style" :                                                                                    
@@ -154,12 +155,42 @@
             }
             
         }
+        ,{
+            "path" : "pages/videoPage/videoPage",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"app-plus": {
+					"navigationBarTextStyle": "white",
+					"titleNView": false,
+					"bounce":"none",
+					"scrollIndicator":"none",
+					"softinputNavBar": "none",
+					"subNVues":[
+						{
+							"id":"top",
+							"path":"pages/videoPage/subNvue/video",
+							"style": {
+								"titleNView": false,
+								"position":"dock",
+								"dock":"top"
+							}
+						}
+					]
+				}
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "LinkKnow",
 		"navigationBarBackgroundColor": "#FFFFFF",
-		"backgroundColor": "#FFFFFF"
+		"backgroundColor": "#FFFFFF",
+		"app-plus": {
+			"scrollIndicator": "none"
+		}
 	},
 	"tabBar": {
 		"borderStyle": "black",

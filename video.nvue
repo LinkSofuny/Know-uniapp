@@ -1,0 +1,121 @@
+<template>
+	<view class="bg-dark">
+		<video id="video" ref="video"
+		:src="src"
+		:poster="poster" 
+		:controls="false"
+		:show-center-play-btn="false"
+		:show-fullscreen-btn="false" 
+		:show-progress="false" 
+		:enable-progress-gesture="false" 
+		style="width: 750rpx;height: 225px;"
+		@fullscreenchange="fullscreenchange"
+		@timeupdate="timeupdate"
+		@play="isplay = true" 
+		@pause="isplay = false"
+		></video>
+		<!-- 非全屏 -->
+		<!-- 顶部 -->
+		<view class="video-bg-top position-fixed top-0 left-0 right-0">
+			<view :style="'height: '+statusBarHeight+'px;'"></view>
+			<view style="height: 44px;" class="flex align-center">
+				<f-icon-btn :icon="'\ue612'" @click="back"></f-icon-btn>
+			</view>
+		</view>
+		<!-- 底部控制条 -->
+		<view class="video-bg-bottom position-fixed bottom-0 left-0 right-0">
+			<view style="height: 44px;" class="flex align-stretch">
+				<f-icon-btn v-if="!isplay" :icon="'\ue63a'" size="22" @click="playOrPause"></f-icon-btn>
+				<f-icon-btn v-else :icon="'\ue605'" size="22" @click="playOrPause"></f-icon-btn>
+				<view class="flex-1">
+					<view style="height: 44px;" class="flex align-center position-relative">
+						<view class="flex-1 rounded" style="height: 3px;background-color: rgba(255,255,255,0.5);">
+							<view class="bg-main" style="height: 3px;width: 10px;"></view>
+						</view>
+						<view class="position-absolute rounded-circle bg-main-hover" style="width: 15px;height: 15px;left: 10px;"></view>
+					</view>
+				</view>
+				<view class="flex align-center justify-center" style="width: 80px;">
+					<text class="font-sm text-white">{{currentTime|formatTime}}/{{duration|formatTime}}</text>
+				</view>
+				<f-icon-btn :icon="'\ue800'" size="22"></f-icon-btn>
+			</view>
+		</view>
+		
+	</view>
+</template>
+
+<script>
+	const d = weex.requireModule('dom');
+	let videoCTX = null
+	import fIconBtn from './components/f-icon-btn.vue';
+	export default {
+		components: {
+			fIconBtn
+		},
+		data() {
+			return {
+				src: "https://douyinzcmcss.oss-cn-shenzhen.aliyuncs.com/%E8%AF%BE%E6%97%B61.%20%E9%A1%B9%E7%9B%AE%E4%BB%8B%E7%BB%8D.mp4",
+				poster:"https://douyinzcmcss.oss-cn-shenzhen.aliyuncs.com/shengchengqi/datapic/1.jpg",
+				// 播放状态
+				isplay:false,
+				
+				statusBarHeight:0,
+				
+				currentTime:0,
+				duration:0
+			}
+		},
+		created() {
+			let res = uni.getSystemInfoSync()
+			this.statusBarHeight = res.statusBarHeight
+			// 引入图标
+			d.addRule('fontFace', {
+				'fontFamily': "iconfont",
+				'src': "url('https://at.alicdn.com/t/font_1419176_mzo8rsjxi4c.ttf')"
+			});
+		},
+		mounted() {
+			videoCTX = this.$refs.video
+		},
+		filters: {
+			formatTime(result) {
+			   var h = Math.floor(result / 3600) < 10 ? '0'+Math.floor(result / 3600) : Math.floor(result / 3600);
+			   var m = Math.floor((result / 60 % 60)) < 10 ? '0' + Math.floor((result / 60 % 60)) : Math.floor((result / 60 % 60));
+			   var s = Math.floor((result % 60)) < 10 ? '0' + Math.floor((result % 60)) : Math.floor((result % 60));
+			   return result = result > 3600 ? (h + ":" + m + ":" + s) : m + ":" + s;
+			}
+		},
+		methods: {
+			back(){
+				uni.navigateBack({
+					delta: 1
+				});
+			},
+			// 播放/暂停
+			playOrPause(){
+				if(this.isplay){
+					videoCTX.pause()
+				} else {
+					videoCTX.play()
+				}
+			},
+			fullscreenchange(e) {
+				console.log(e);
+			},
+			timeupdate(e){
+				this.currentTime = parseInt(e.detail.currentTime)
+				this.duration = parseInt(e.detail.duration)
+			}
+		},
+	}
+</script>
+
+<style>
+.video-bg-top{
+	background-image:linear-gradient(to top , rgba(0,0,0,0) , rgba(0,0,0,0.5));
+}
+.video-bg-bottom{
+	background-image:linear-gradient(to bottom , rgba(0,0,0,0) , rgba(0,0,0,0.5));
+}
+</style>

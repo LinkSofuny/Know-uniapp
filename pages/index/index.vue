@@ -34,7 +34,7 @@
 		<!-- 列表样式3 -->
 		<recom-card title="为你推荐">
 			<view class="f-list">
-				<media-list v-for="( item, index ) in list3" :key="index" :item="item" :index="index"></media-list>
+				<media-list @click="openVideoPage()" v-for="( item, index ) in list3" :key="index" :item="item" :index="index"></media-list>
 			</view>
 		</recom-card>
 		<!-- 推荐栏 -->
@@ -109,22 +109,22 @@
 						cover: "/static/demo/list2/2.jpg",
 						title: "标题标题标题标题标题标题标题标题标题标题",
 						createTime: "今日10:20",
-						playCount: 0,
-						danmuCount: 0,
+						playCount: 2132,
+						danmuCount: 1243,
 					},
 					{
 						cover: "/static/demo/list2/2.jpg",
 						title: "标题标题标题标题标题标题标题标题标题标题",
 						createTime: "今日10:20",
-						playCount: 0,
-						danmuCount: 0,
+						playCount: 124,
+						danmuCount: 121,
 					},
 					{
 						cover: "/static/demo/list2/2.jpg",
 						title: "标题标题标题标题标题标题标题标题标题标题",
 						createTime: "今日10:20",
-						playCount: 0,
-						danmuCount: 0,
+						playCount: 412,
+						danmuCount: 124,
 					}
 				]
 			}
@@ -147,6 +147,11 @@
 		methods: {
 			changeSwiper (e) {
 				this.current = e.detail.current
+			},
+			openVideoPage() {
+				uni.navigateTo({
+					url:"../videoPage/videoPage"
+				})
 			}
 		}
 	}

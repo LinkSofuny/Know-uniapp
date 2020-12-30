@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App'
-import store from './store/globalStatues.js'
+import store from './store/globalStatus.js'
 
 Vue.config.productionTip = false
 

@@ -10,19 +10,19 @@
 }
 /* 背景主色调 */
 .bg-main {
-	background: #87ceeb;
+	background-color: #87ceeb;
 }
 .bg-main-hover {
-	background: #21AFED;
+	background-color: #21AFED;
 }
 .bg-main-disable {
-	background: #C9C8C6;
+	background-color: #C9C8C6;
 }
 .bg-deliver-single {
-	background: #007AFF;
+	background-color: #007AFF;
 }
 .bg-deliver-series{
-	background: #FA7298;
+	background-color: #FA7298;
 }
 /* 背景单击后色调 */
 .bg-primary-hover {
@@ -34,6 +34,14 @@
 }
 /* 分割线 */
 .f-divider {
-	background: #F5F5F4;
+	background-color: #F5F5F4;
 	height: 20rpx;
+}
+/* 盒模型转变 */
+.border-box {
+	box-sizing: border-box!important;
+}
+/* 边框颜色 */
+.border-main {
+	border: 1rpx solid #87ceeb;
 }

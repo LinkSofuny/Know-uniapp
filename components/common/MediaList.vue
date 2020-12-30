@@ -1,5 +1,5 @@
 <template>
-	<view class="flex align-center py-2">
+	<view class="flex align-center py-2" @click="$emit('click')">
 		<image 
 		:src="item.cover" 
 		style="width: 260rpx; height: 160rpx;"
@@ -11,11 +11,11 @@
 			<view class="flex align-center text-light-muted justify-between line-h">
 				<view class="line-h position-relative">
 					<text class="iconfont iconbofangshu font-md"></text>
-					<text class="font-sm position-absolute" style="top: 8.5rpx; left: 52rpx;">{{ item.playCount }}</text>
+					<text class="font-sm position-absolute" style="top: 8rpx; left: 52rpx;">{{ item.playCount }}</text>
 				</view>
 				<view class="line-h position-relative" >
 					<text class="iconfont icondanmushu font-md"></text>
-					<text class="font-sm position-absolute" style="top: 8.5rpx; left: 52rpx;">{{ item.danmuCount }}</text>						
+					<text class="font-sm position-absolute" style="top: 8rpx; left: 52rpx;">{{ item.danmuCount }}</text>						
 				</view>
 				<!-- flex布局下 给margin-left: auto的话 该元素会挪到父元素的最右边 -->
 				<text class="iconfont icongengduo "></text>

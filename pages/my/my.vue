@@ -30,8 +30,8 @@
 			<big-button @click="isShow">立即投稿</big-button>
 		</view>
 		<!-- 弹窗 -->
-		<my-poppup>
-			<view class="flex align-center justify-center" style="height: 200rpx;">
+		<my-poppup :show="show" :popupHeight="320" @click="noShow">
+			<view class="flex align-center justify-center" style="height: 200rpx;" @click.stop="stop">
 				<!-- 单集 -->
 				<view class="flex-1 flex justify-center align-center flex-column"
 				 style="height: 100%;"
@@ -66,7 +66,7 @@
 	import myOptions from "@/components/common/MyOptions.vue"
 	import bigButton from "@/components/common/BigButton.vue"
 	import myPoppup from "@/components/common/MyPoppup.vue"
-	import { mapMutations } from "vuex"
+	import { mapMutations, mapState } from "vuex"
 	export default {
 		data() {
 			return {
@@ -74,17 +74,18 @@
 		},
 		methods: {
 			// 选择投稿类型
-			deliverWork() {
-				this.show = true
-			},
 			navigateTo(path) {
 				uni.navigateTo({
 					url: '/pages/' + path + '/' + path ,
 				})
 			},
-			...mapMutations('popupStatues', ['isShow', 'noShow'])
+			stop(){},
+			...mapMutations('popupStatus', ['isShow', 'noShow'])
 			
 
+		},
+		computed: {
+			...mapState('popupStatus', ['show'])
 		},
 		components:{
 			myOptions,
