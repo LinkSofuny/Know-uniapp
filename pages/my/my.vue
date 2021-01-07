@@ -1,5 +1,6 @@
 <template>
 	<view>
+		<!-- 登录后 -->
 		<navigator url="../userPage/userPage">
 			<view class="p-3 flex align-center">
 				<image 
@@ -12,7 +13,7 @@
 						<text class="font-sm text-light-muted ml-2">男 广东</text>
 					</view>
 					<text class=" font text-muted">
-						我是傻逼
+						我是傻
 					</text>
 				</view>
 			</view>
@@ -70,9 +71,11 @@
 	export default {
 		data() {
 			return {
+				userInfo: {}
 			}
 		},
 		methods: {
+			...mapMutations('popupStatus', ['isShow', 'noShow']),
 			// 选择投稿类型
 			navigateTo(path) {
 				uni.navigateTo({
@@ -80,12 +83,13 @@
 				})
 			},
 			stop(){},
-			...mapMutations('popupStatus', ['isShow', 'noShow'])
-			
 
 		},
 		computed: {
-			...mapState('popupStatus', ['show'])
+			...mapState('popupStatus', ['show']),
+			isLogin() {
+				return false
+			}
 		},
 		components:{
 			myOptions,
@@ -96,5 +100,10 @@
 </script>
 
 <style>
-
+.loginBtn {
+	background-color: white;
+}
+.loginBtn::after {
+	border: none;
+}
 </style>

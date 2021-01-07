@@ -1,5 +1,5 @@
 <template>
-	<view class="flex align-center py-2" @click="$emit('click')">
+	<view class="flex align-center p-2 border-bottom" @click="$emit('click')">
 		<image 
 		:src="item.cover" 
 		style="width: 260rpx; height: 160rpx;"
@@ -29,8 +29,8 @@
 		props: {
 			item: {
 				type: Object,
+				index: [String, Number]
 			},
-			index: [String, Number]
 		},
 	}
 </script>

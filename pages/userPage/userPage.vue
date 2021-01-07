@@ -6,7 +6,7 @@
 		<!-- 个人信息 -->
 		<view class="px-3 border-bottom" style="height: 300rpx;">
 			<view class="flex justify-between align-center">
-				<image src="../../static/demo/6.jpg" class="rounded-circle bg-danger" style="width: 150rpx;height: 150rpx; margin-top: -70rpx;"></image>
+				<image src="../../static/demo/6.jpg" class="rounded-circle bg-light" style="width: 150rpx;height: 150rpx; margin-top: -70rpx;"></image>
 				<button class="bg-main text-white font mx-0" hover-class="bg-main-hover">关注</button>
 			</view>
 			<view class="mx-2 flex align-center py-1">
@@ -36,16 +36,14 @@
 				{{item.name}}
 			</view>
 		</view>
-		<view class="f-divider"></view>
-		<swiper
-		:current="tabIndex" 
-		:duration="300" 
-		:style="'height:' + scrollHeight + 'px'"
-		@change="changeTabBar($event)">
-			<swiper-item v-for="(tab, tabId) in tabBars" :key="tabId">
-				<scroll-view class="" scroll-y="true" :style="'height:' + scrollHeight + 'px'">
-					<media-list class="border-bottom px-2" v-for="( item, index ) in list" :key="index" :item="item" :index="index"></media-list>
-				</scroll-view>	
+		
+		
+		<swiper :current="tabIndex" :duration="300" :style="'height:'+scrollHeight+'px;'" @change="changeSwiper">
+			<swiper-item v-for="(tab,tabI) in tabBars" :key="tabI">
+				<scroll-view scroll-y="true" :style="'height:'+scrollHeight+'px;'">
+					<view class="f-divider"></view>
+					<media-list v-for="(item,index) in list" :key="index" :item="item" :index="index"></media-list>
+				</scroll-view>
 			</swiper-item>
 		</swiper>
 	</view>
@@ -151,7 +149,6 @@
 			mediaList,
 		},
 		created() {
-			
 			let windowHeight = uni.getSystemInfoSync().windowHeight
 			let statusBarHeight = uni.getSystemInfoSync().statusBarHeight
 			// 下滑保留选项卡

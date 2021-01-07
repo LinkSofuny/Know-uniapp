@@ -32,15 +32,15 @@
 		 </swiper-dot>
 		</view>
 		<!-- 列表样式3 -->
-		<recom-card title="为你推荐">
+		<recom-card>
 			<view class="f-list">
 				<media-list @click="openVideoPage()" v-for="( item, index ) in list3" :key="index" :item="item" :index="index"></media-list>
 			</view>
 		</recom-card>
 		<!-- 推荐栏 -->
 		<recom-card title="为你推荐">
-			<view class="f-list" >
-				<view class="f-list-card rounded-lg border position-relative" v-for="i in 6" :key="i">
+			<view class="f-list p-3" >
+				<view  @click="openSpecialPage()" class="f-list-card rounded-lg border position-relative" v-for="i in 6" :key="i">
 					<image 
 					class="rounded-top" 
 					src="../../static/demo/list2/1.jpg" 
@@ -67,8 +67,8 @@
 		</recom-card>
 		<!-- 推荐栏样式2 -->
 		<recom-card title="为你推荐">
-			<view class="f-list" >
-				<view class="f-list-card-2 rounded-lg position-relative mt-2" v-for="i in 6" :key="i">
+			<view class="f-list p-3" >
+				<view class="f-list-card-2 rounded-lg position-relative" v-for="i in 6" :key="i">
 					<image 
 					class="rounded-lg" 
 					src="../../static/demo/list3/2.webp" 
@@ -151,6 +151,11 @@
 			openVideoPage() {
 				uni.navigateTo({
 					url:"../videoPage/videoPage"
+				})
+			},
+			openSpecialPage() {
+				uni.navigateTo({
+					url: "../specialPage/specialPage"
 				})
 			}
 		}

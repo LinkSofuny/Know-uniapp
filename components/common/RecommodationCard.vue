@@ -1,9 +1,6 @@
 <template>
 	<view>
-		<view class="px-3">
-			<view class="flex align-center pb-1 pt-2">
-				<text class=" font-weight-bolder font-md">{{ title }}</text>
-			</view>
+		<view class="">
 			<slot></slot>
 			<view 
 			v-if="showRefresh" @click="$emit('refresh')"
