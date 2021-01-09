@@ -1,7 +1,19 @@
 <template>
 	<view>
 		<!-- 登录后 -->
-		<navigator url="../userPage/userPage">
+		<navigator url="../login/login">
+			<view class="p-3 flex align-center">
+				<image 
+				src="../../static/demo/6.jpg" 
+				style="height: 120rpx;width: 120rpx;"
+				class="rounded-circle bg-light flex-shrink"></image>
+				<view class="flex flex-column ml-3 flex-1">
+					<text class="font-md text-main">点击登录</text>
+				</view>
+			</view>
+		</navigator>
+		<!-- 登录后 -->
+		<!-- <navigator url="../userPage/userPage">
 			<view class="p-3 flex align-center">
 				<image 
 				src="../../static/demo/6.jpg" 
@@ -17,7 +29,7 @@
 					</text>
 				</view>
 			</view>
-		</navigator>
+		</navigator> -->
 		<view class="f-divider"></view>
 		
 		<!-- 选项部分 -->

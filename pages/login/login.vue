@@ -15,12 +15,25 @@
 		</view>
 		
 		<view class="px-4">
-			<input type="text" class="uni-input mb-4 bg-light rounded" placeholder="手机号/用户名/邮箱"/>
-			<input type="text" class="uni-input mb-4 bg-light rounded" placeholder="请输入密码"/>
-			<input v-if="type === 'reg'" type="text" class="uni-input mb-4 bg-light rounded" placeholder="请确认密码"/>
+			<input 
+			type="text" 
+			class="uni-input mb-4 bg-light rounded" 
+			placeholder="手机号/用户名/邮箱" 
+			v-model="form.username"/>
+			<input 
+			type="text" 
+			class="uni-input mb-4 bg-light rounded" 
+			placeholder="请输入密码"
+			v-model="form.password"/>
+			<input 
+			v-if="type === 'reg'" 
+			type="text" 
+			class="uni-input mb-4 bg-light rounded" 
+			placeholder="请确认密码"
+			v-model="form.repassword"/>
 		</view>
 		<view class="px-2">
-			<big-button>{{ type === "reg" ? '注册账号' : '登 录' }}</big-button>
+			<big-button @click="submit">{{ type === "reg" ? '注册账号' : '登 录' }}</big-button>
 		</view>
 		
 		<view class="flex align-center justify-center py-5">
@@ -53,17 +66,38 @@
 		data() {
 			return {
 				type: "login",
-				statusBarHeight: 0
+				statusBarHeight: 0,
+				form: {
+					username: "",
+					password: '',
+					repassword: '',
+				}
 			}
 		},
 		methods: {
 			changeType() {
 				this.type = this.type === 'login' ? 'reg' : 'login'
+				this.form = {
+					username: "",
+					password: '',
+					repassword: '',
+				}
 			},
 			backPage() {
 				uni.navigateBack({
 					delta: 1
 				})
+			},
+			submit() {
+				if(this.type === 'reg') {
+					this.$H.post('/reg', this.form).then(res => {
+						this.changeType()
+						uni.showToast({
+							title: '注册成功',
+							icon: 'none'
+						})
+					})
+				}
 			}
 		},
 		onLoad() {
