@@ -5,6 +5,7 @@ import store from './store/globalStatus.js'
 import $H from './common/request.js';
 Vue.config.productionTip = false
 Vue.prototype.$H = $H
+Vue.prototype.$store = store
 
 App.mpType = 'app'
 

@@ -89,16 +89,23 @@
 				})
 			},
 			submit() {
-				if(this.type === 'reg') {
-					this.$H.post('/reg', this.form).then(res => {
+				let msg = this.type === 'login' ? '注册' : '登录'
+				this.$H.post('/'+ this.type, this.form).then(res => {
+					if(this.type === 'reg'){
 						this.changeType()
-						uni.showToast({
-							title: '注册成功',
-							icon: 'none'
+					} else {
+						this.$store.dispatch('login', res)
+						uni.navigateBack({
+							delta: 1
 						})
+					}
+					uni.showToast({
+						title: msg + '成功',
+						icon: 'none'
 					})
-				}
+				})
 			}
+		
 		},
 		onLoad() {
 			this.statusBarHeight = uni.getSystemInfoSync().statusBarHeight

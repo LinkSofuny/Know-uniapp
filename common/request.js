@@ -1,4 +1,4 @@
-// import $store from '../store/index.js';
+import $store from '../store/globalStatus.js';
 export default {
     // 全局配置
     common:{
@@ -25,11 +25,11 @@ export default {
         return new Promise((res,rej)=>{
 			// 请求之前验证...
 			// token验证
-			// if(options.token){
-			// 	let token = $store.state.token
+			if(options.token){
+				let token = $store.state.token
 			// 	// 往header头中添加token
-			// 	options.header.token = token
-				
+				options.header.token = token
+			}
 			// 	// 二次验证
 			// 	if(!token && options.noJump !== true){
 			// 		uni.showToast({ title: '请先登录', icon: 'none' });

@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<!-- 登录后 -->
-		<navigator url="../login/login">
+		<navigator v-if="!user" url="../login/login">
 			<view class="p-3 flex align-center">
 				<image 
 				src="../../static/demo/6.jpg" 
@@ -13,23 +13,23 @@
 			</view>
 		</navigator>
 		<!-- 登录后 -->
-		<!-- <navigator url="../userPage/userPage">
+		<navigator v-else url="../userPage/userPage">
 			<view class="p-3 flex align-center">
 				<image 
-				src="../../static/demo/6.jpg" 
+				:src="user.avatar || '../../static/demo/6.jpg'" 
 				style="height: 120rpx;width: 120rpx;"
 				class="rounded-circle bg-light flex-shrink"></image>
 				<view class="flex flex-column ml-3 flex-1">
 					<view class="font-md text-dark">
-						Link 
-						<text class="font-sm text-light-muted ml-2">男 广东</text>
+						{{user.nickname || user.username}} 
+						<text class="font-sm text-light-muted ml-2">{{user.sex}}</text>
 					</view>
 					<text class=" font text-muted">
-						我是傻
+						{{user.desc || '这个人很懒什么都没有留下'}}
 					</text>
 				</view>
 			</view>
-		</navigator> -->
+		</navigator>
 		<view class="f-divider"></view>
 		
 		<!-- 选项部分 -->
@@ -99,8 +99,19 @@
 		},
 		computed: {
 			...mapState('popupStatus', ['show']),
+			...mapState({
+				user: state => state.user
+			}),
+			
 			isLogin() {
 				return false
+			}
+		},
+		onNavigationBarButtonTap(e) {
+			if (e.index === 0) {
+				uni.navigateTo({
+					url: '../userSet/userSet'
+				});
 			}
 		},
 		components:{
