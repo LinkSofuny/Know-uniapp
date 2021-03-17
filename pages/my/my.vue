@@ -33,9 +33,9 @@
 		<view class="f-divider"></view>
 		
 		<!-- 选项部分 -->
-		<my-options @click="navigateTo('userWork')" icon="iconshipin" title="我的作品" :showRightIcon="false" rightText="26个"></my-options>
+		<my-options @click="navigateTo('userWork')" icon="iconshipin" title="我的作品" :showRightIcon="false" :rightText="videoCount + ' 个'"></my-options>
 		<my-options @click="navigateTo('userFava')" icon="iconshoucang1" title="我的收藏" ></my-options>
-		<my-options  icon="iconguanzhu" title="关注"  rightText="365"></my-options>
+		<my-options  icon="iconguanzhu" title="关注" :rightText="followCount"></my-options>
 		<my-options  icon="iconlishi" title="历史记录" ></my-options>
 		<view class="f-divider"></view>
 		<!-- 投稿 -->
@@ -56,7 +56,7 @@
 					</view>
 				</view>
 				<!-- 连载 -->
-				<view class="flex-1 flex justify-center align-center flex-column" style="height: 100%;" hover-class="bg-light">
+				<view @click="navigateTo('create')" class="flex-1 flex justify-center align-center flex-column" style="height: 100%;" hover-class="bg-light">
 					<text class="iconfont icon918caidan_wenjian bg-deliver-series text-white rounded-circle flex justify-center align-center" style="height: 80rpx; width: 80rpx;"></text>
 					<view class="font  text-muted">
 						连载
@@ -83,7 +83,9 @@
 	export default {
 		data() {
 			return {
-				userInfo: {}
+				userInfo: {},
+				followCount: 0,
+				videoCount: 0
 			}
 		},
 		methods: {
@@ -96,6 +98,16 @@
 			},
 			stop(){},
 
+		},
+		onShow(){
+				this.$H.get('/user/statistics', {
+					token: true,
+					noJump: true,
+					toast: false
+				}).then(res => {
+					this.followCount = res.followCount 
+					this.videoCount = res.videoCount 
+				})
 		},
 		computed: {
 			...mapState('popupStatus', ['show']),

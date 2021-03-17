@@ -64,7 +64,7 @@
 		    "style" :                                                                                    
 		    {
 		        "navigationBarTitleText": "分类",
-		        "enablePullDownRefresh": false,
+		        "enablePullDownRefresh": true,
 				"app-plus": {
 					"titleNView": {
 						"padding": "8px",
@@ -104,7 +104,8 @@
 		{
 			"path":"pages/userWork/userWork",
 			"style": {
-				"navigationBarTitleText": "我的作品"
+				"navigationBarTitleText": "我的作品",
+				"enablePullDownRefresh": true
 			}
 		}
         ,{
@@ -129,10 +130,9 @@
             "style" :                                                                                    
             {
 				"enablePullDownRefresh": false,
-				"app-plus": {
-					"titleNView": false
-				}
+				"navigationBarTitleText": ""
             }
+			
             
         }
         ,{
@@ -155,6 +155,7 @@
             }
             
         }
+		// 视频页
         ,{
             "path" : "pages/videoPage/videoPage",
             "style" :                                                                                    
@@ -182,12 +183,21 @@
             }
             
         }
-        
+        // 设置页
         ,{
             "path" : "pages/userSet/userSet",
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "设置"
+            }
+            
+        }
+        ,{
+            "path" : "pages/list/list",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "列表",
+                "enablePullDownRefresh": true
             }
             
         }

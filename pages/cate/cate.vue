@@ -12,27 +12,19 @@
 			</view>
 		</view>
 	<!-- #endif -->
-	<hot-card title="热门分类" :showRefresh="false">
-		<scroll-view scroll-x="true" class="scroll-row" >
-			<icon-cate 
-			:item="item"
-			:index= "index"
-			v-for="(item, index) in list" 
-			:key="index">
-			</icon-cate>
-		</scroll-view>
-	</hot-card>
 	<hot-card 
-	title="全部分类" 
 	:showGap="false" 
 	:showRefresh="false"
 	>
-		<icon-cate
-		:item="item"
-		:index= "index"
-		v-for="(item, index) in list" 
-		:key="index">
-		</icon-cate>
+		<view class="flex justify-around  flex-wrap cate-icon">
+			<icon-cate
+			:item="item"
+			:index= "index"
+			v-for="(item, index) in list" 
+			:key="index"
+			>
+			</icon-cate>
+		</view>
 	</hot-card>
 	</view>
 </template>
@@ -47,17 +39,32 @@
 			}
 		},
 		onLoad() {
-			for (let i = 0; i < 10; i++) {
-				this.list.push(
-				{
-					name: '分类',
-					cover: "/static/demo/cate/1.png"
-				}
-				)
-			}
+			this.getDate()
+		},
+		onPullDownRefresh(){
+			this.getDate().then(res=>{
+				uni.showToast({
+					title: '刷新成功',
+					icon: 'none'
+				})
+				uni.stopPullDownRefresh()
+			}).catch(err=> {
+				uni.showToast({
+					title: '刷新失败',
+					icon: 'none'
+				})
+			})
 		},
 		methods: {
-			
+			getDate(){
+				uni.showLoading()
+				return this.$H.get('/category').then(res=> {
+					this.list = res
+					uni.hideLoading()
+				}).catch(err=> {
+					uni.hideLoading()
+				})
+			}
 		},
 		components: {
 			HotCard,

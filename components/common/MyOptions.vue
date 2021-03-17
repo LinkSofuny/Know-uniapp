@@ -27,7 +27,7 @@
 				default: ""
 			},
 			rightText: {
-				type: String,
+				type: [String, Number],
 				default: ""
 			},
 			showRightIcon: {

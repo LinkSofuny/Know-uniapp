@@ -1,7 +1,6 @@
 <template>
 	<view style="line-height: 1;">
 		<!-- #ifndef APP-PLUS -->
-		<view :style="'height:' + statusBarHeight + 'px'" style="background-color: #000000;"></view>
 		<video
 		:src="detail.src" 
 		:poster="detail.poster" 
@@ -32,16 +31,16 @@
 				<view class="flex flex-column">
 					<view class=" flex align-center justify-between px-3">
 						<view class="">
-							<image src="../../static/demo/6.jpg" mode="" class="mr-3 rounded-circle" style="width: 100rpx;height: 100rpx;"></image>
+							<image src="../../static/demo/avatar.jpg" mode="" class="mr-3 rounded-circle" style="width: 100rpx;height: 100rpx;"></image>
 						</view>
 						<view class="flex flex-column">
-							<text class="font text-main">昵称</text>
+							<text class="font text-main">陈老师</text>
 							<text class="font-sm text-light-muted">369粉丝</text>
 						</view>
 						<button class="bg-main text-white font mr-0" hover-class="bg-main-hover">关注</button>
 					</view>
 					<view class="font-md px-3">
-						视频标题
+						基于uniapp实现一个商城小程序
 					</view>
 					<view class="f-list-card-num flex align-center text-light-muted px-3"
 					 style="height: 65rpx;">
@@ -70,8 +69,8 @@
 							:key="index"
 							@click="currentEpisode = index"
 							>
-								<text class="font">第{{index}}集</text>
-								<view class="font-md text-ellipsis">最强发现</view>
+								<text class="font ">第{{index}}集</text>
+								<view class="font-md text-ellipsis">关于uniapp的开发介绍</view>
 							</view>
 						</scroll-view>
 					</view>
@@ -130,7 +129,7 @@
 								评论内容
 							</view>
 							<view class="flex flex-wrap py-2  bg-light rounded">
-								<text class="font text-main mr-1">昵称2:</text>
+								<text class="font text-main mr-2 ml-2">昵称2:</text>
 								回复功能
 							</view>
 						</view>
@@ -198,18 +197,25 @@
 				],
 				list: [
 					{
-						cover: "/static/demo/list2/2.jpg",
-						title: "标题标题标题标题标题标题标题标题标题标题",
+						cover: "/static/demo/list2/5.png",
+						title: "Vue框架开发, 你懂了吗?",
 						createTime: "今日10:20",
-						playCount: 2132,
-						danmuCount: 1243,
+						playCount: 221,
+						danmuCount: 33,
 					},
 					{
-						cover: "/static/demo/list2/2.jpg",
-						title: "标题标题标题标题标题标题标题标题标题标题",
+						cover: "/static/demo/list2/9.png",
+						title: "webpack打包实战开发",
+						createTime: "今日10:11",
+						playCount: 0,
+						danmuCount: 0,
+					},
+					{
+						cover: "/static/demo/list2/8.png",
+						title: "HTML5实战开发",
 						createTime: "今日10:20",
-						playCount: 124,
-						danmuCount: 121,
+						playCount: 0,
+						danmuCount: 0,
 					},
 					{
 						cover: "/static/demo/list2/2.jpg",
@@ -220,14 +226,7 @@
 					},
 					{
 						cover: "/static/demo/list2/2.jpg",
-						title: "标题标题标题标题标题标题标题标题标题标题",
-						createTime: "今日10:20",
-						playCount: 412,
-						danmuCount: 124,
-					},
-					{
-						cover: "/static/demo/list2/2.jpg",
-						title: "标题标题标题标题标题标题标题标题标题标题",
+						title: "你好这里是标题",
 						createTime: "今日10:20",
 						playCount: 412,
 						danmuCount: 124,

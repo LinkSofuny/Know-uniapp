@@ -2,7 +2,12 @@ import $store from '../store/globalStatus.js';
 export default {
     // 全局配置
     common:{
+		// #ifndef H5
 		baseUrl:"http://127.0.0.1:7001",
+		// #endif
+		// #ifdef H5
+		baseUrl: '/api',
+		// #endif
         header:{
             'Content-Type':'application/json;charset=UTF-8',
         },
@@ -27,8 +32,19 @@ export default {
 			// token验证
 			if(options.token){
 				let token = $store.state.token
-			// 	// 往header头中添加token
+				// 往header头中添加token
 				options.header.token = token
+				if( !token && options.noJump !== true) {
+					uni.showToast({
+						title: '请先登录',
+						icon: 'none'
+					})
+					uni.navigateTo({
+						url:"/pages/login/login"
+					})
+					
+					return rej('请先登录')
+				}
 			}
 			// 	// 二次验证
 			// 	if(!token && options.noJump !== true){
@@ -73,9 +89,9 @@ export default {
                             });
                         }
 						// token不合法，直接退出登录
-						if(result.data.data === 'Token 令牌不合法!'){
-							$store.dispatch('logout')
-						}
+						// if(result.data.data === 'Token 令牌不合法!'){
+						// 	$store.dispatch('logout')
+						// }
                         return false
                     }
                     // 其他验证...
@@ -115,9 +131,12 @@ export default {
 	upload(url,data,onProgress = false){
 		return new Promise((result,reject)=>{
 			// 上传之前验证
-			let token = uni.getStorageSync('token')
+			let token = uni.getStorageSync('token')		
 			if (!token) {
-			    uni.showToast({ title: '请先登录', icon: 'none' });
+				uni.showToast({
+					title: '请先登录',
+					icon: 'none'
+				})
 			    // token不存在时跳转
 			    return uni.navigateTo({
 			        url: '/pages/login/login',

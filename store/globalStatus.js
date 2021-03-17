@@ -38,6 +38,7 @@ export default new Vuex.Store({
 			$H.post('/logout',{},{
 				token:true
 			})
+			
 			state.user = false
 			state.token = false
 			uni.removeStorageSync('user')

@@ -14,7 +14,7 @@
 					Link
 				</view>
 				<view class="font text-light-muted alignInline">
-					UID: 123456
+					UID: 445122
 				</view>
 			</view>
 			<view class="flex align-center mx-2">
@@ -24,7 +24,7 @@
 				<text class="font-sm ml-2 text-light-muted alignInline">粉丝</text>
 			</view>
 			<view class="text-light-muted mx-2 text-ellipsis">
-				aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+				这个人很懒什么都没有留下
 			</view>
 		</view>
 		<view class="flex align-center text-muted" style="height: 44px;">
@@ -63,22 +63,22 @@
 				],
 				list: [
 					{
-						cover: "/static/demo/list2/2.jpg",
-						title: "标题标题标题标题标题标题标题标题标题标题",
+						cover: "/static/demo/list2/5.png",
+						title: "Vue框架开发, 你懂了吗?",
 						createTime: "今日10:20",
 						playCount: 0,
 						danmuCount: 0,
 					},
 					{
-						cover: "/static/demo/list2/2.jpg",
-						title: "标题标题标题标题标题标题标题标题标题标题",
-						createTime: "今日10:20",
+						cover: "/static/demo/list2/7.png",
+						title: "webpack打包实战开发",
+						createTime: "今日10:11",
 						playCount: 0,
 						danmuCount: 0,
 					},
 					{
-						cover: "/static/demo/list2/2.jpg",
-						title: "标题标题标题标题标题标题标题标题标题标题",
+						cover: "/static/demo/list2/8.png",
+						title: "HTML5实战开发",
 						createTime: "今日10:20",
 						playCount: 0,
 						danmuCount: 0,
@@ -143,6 +143,8 @@
 			},
 			changeTabBar(e) {
 				this.tabIndex = e.detail.current
+			},
+			changeSwiper(){
 			}
 		},
 		components: {

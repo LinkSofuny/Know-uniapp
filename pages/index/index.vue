@@ -5,7 +5,7 @@
 			<!-- 导航栏wx -->
 			<view class="" style="height: 38px;"></view>
 			<!-- 搜索框 -->
-			<view class="flex align-center p-1 mx-1 fixed-top bg-white" style="height: 38px;">
+			<view  class="flex align-center p-1 mx-1 fixed-top bg-white" style="height: 38px;">
 				<view class="flex align-center flex-1 rounded-circle px-1 mx-2" style="background: #F6F7F8; color: #959fA0;">
 					<text class="iconfont iconsousuokuang"></text>
 					<text class="font-small">输入点什么吧</text>
@@ -34,16 +34,16 @@
 		<!-- 列表样式3 -->
 		<recom-card>
 			<view class="f-list">
-				<media-list @click="openVideoPage()" v-for="( item, index ) in list3" :key="index" :item="item" :index="index"></media-list>
+				<media-list class="w-100" @click="openVideoPage()" v-for="( item, index ) in list3" :key="index" :item="item" :index="index"></media-list>
 			</view>
 		</recom-card>
 		<!-- 推荐栏 -->
-		<recom-card title="为你推荐">
+		<recom-card>
 			<view class="f-list p-3" >
 				<view  @click="openSpecialPage()" class="f-list-card rounded-lg border position-relative" v-for="i in 6" :key="i">
 					<image 
 					class="rounded-top" 
-					src="../../static/demo/list2/1.jpg" 
+					src="../../static/demo/list2/9.jpg"
 					mode="aspectFill" 
 					style="width: 100%; height: 220rpx;"></image>
 					<view class="f-list-card-num text-white flex align-center position-absolute left-0 right-0 bottom-0"
@@ -55,7 +55,7 @@
 					</view>
 					<view class="px-1 pb-1">
 						<view class="font f-list-card-title">
-							标题
+							java核心课程开发
 						</view>
 						<view class="flex justify-between align-center text-light-muted">
 							<text class="font-sm">恶搞</text>
@@ -71,7 +71,7 @@
 				<view class="f-list-card-2 rounded-lg position-relative" v-for="i in 6" :key="i">
 					<image 
 					class="rounded-lg" 
-					src="../../static/demo/list3/2.webp" 
+					src="../../static/demo/list3/2.webp"
 					mode="aspectFill" 
 					style="width: 100%; height: 280rpx;"></image>
 					<view class="f-list-card-num text-white flex align-center position-absolute left-0 right-0 bottom-0 rounded-bottom-lg"
@@ -95,37 +95,38 @@
 	export default {
 		data() {
 			return {
+				imgSrc: null,
 				current: 0,
 				swipers: [
 					{src: "../../static/demo/swiper/1.jpg",
-					title: "啊啊啊啊啊啊啊啊啊1"},
+					title: "四六级如何轻松过关?"},
 					{src: "../../static/demo/swiper/2.jpg",
-					title: "啊啊啊啊啊啊啊啊啊2"},
+					title: "如何正确的入门前端"},
 					{src: "../../static/demo/swiper/3.jpg",
-					title: "啊啊啊啊啊啊啊啊啊3"}
+					title: "如何正确拍摄vlog"}
 				],
 				list3: [
 					{
-						cover: "/static/demo/list2/2.jpg",
-						title: "标题标题标题标题标题标题标题标题标题标题",
+						cover: "/static/demo/list2/5.png",
+						title: "Vue框架开发, 你懂了吗?",
 						createTime: "今日10:20",
-						playCount: 2132,
-						danmuCount: 1243,
+						playCount: 12,
+						danmuCount: 34,
 					},
 					{
-						cover: "/static/demo/list2/2.jpg",
-						title: "标题标题标题标题标题标题标题标题标题标题",
-						createTime: "今日10:20",
-						playCount: 124,
-						danmuCount: 121,
+						cover: "/static/demo/list2/9.jpg",
+						title: "Java开发核心课程",
+						createTime: "今日10:11",
+						playCount: 1251,
+						danmuCount: 612,
 					},
 					{
-						cover: "/static/demo/list2/2.jpg",
-						title: "标题标题标题标题标题标题标题标题标题标题",
+						cover: "/static/demo/list2/8.png",
+						title: "HTML5实战开发",
 						createTime: "今日10:20",
-						playCount: 412,
-						danmuCount: 124,
-					}
+						playCount: 23,
+						danmuCount: 25,
+					},
 				]
 			}
 		},
@@ -134,15 +135,20 @@
 			recomCard,
 			mediaList
 		},
-		onLoad() {
-
+		mounted() {
 		},
 		onNavigationBarSearchInputClicked() {
 			console.log('导航栏监听')
 			
 		},
 		onNavigationBarButtonTap(e) {
+			uni.navigateTo({
+				url:'../pages/cate/cate'
+			})
 			console.log('分类按钮监听')
+		},
+		onReachBottom (){
+			console.log(1)
 		},
 		methods: {
 			changeSwiper (e) {
@@ -158,6 +164,7 @@
 					url: "../specialPage/specialPage"
 				})
 			}
+
 		}
 	}
 </script>

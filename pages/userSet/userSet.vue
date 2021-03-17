@@ -1,19 +1,15 @@
 <template>
 	<view>
-		<big-button @click='logot'>退出登录</big-button>
+		<big-button @click='logout'>退出登录</big-button>
 	</view>
 </template>
 
 <script>
 	import bigButton from '@/components/common/BigButton.vue';
+	import { mapActions } from 'vuex'
 	export default {
-		data() {
-			return {
-				
-			}
-		},
 		methods: {
-			logot() {
+			logout() {
 				this.$store.dispatch('logout').then( res => {
 					uni.switchTab({
 						url:"../my/my"

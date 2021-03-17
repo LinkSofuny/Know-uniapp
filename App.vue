@@ -1,7 +1,6 @@
 <script>
 	export default {
 		onLaunch: function() {
-			console.log('App Launch')
 			// 初始化用户登录状态
 			this.$store.dispatch('initUser')
 		},
@@ -29,6 +28,7 @@
 	/* #ifndef APP-NVUE */
 	/* 引入图标库 */
 	@import url("./common/icon.css");
+	
 	/* 动画库 */
 	@import url("./common/animate.min.css");
 	/* #endif */

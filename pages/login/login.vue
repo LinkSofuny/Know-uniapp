@@ -62,6 +62,8 @@
 
 <script>
 	import bigButton from '@/components/common/BigButton.vue'
+	import { mapActions } from 'vuex'
+	import _ from '../../common/utils.js'
 	export default {
 		data() {
 			return {
@@ -88,7 +90,7 @@
 					delta: 1
 				})
 			},
-			submit() {
+			submit: _.debounce(function () {
 				let msg = this.type === 'login' ? '注册' : '登录'
 				this.$H.post('/'+ this.type, this.form).then(res => {
 					if(this.type === 'reg'){
@@ -104,7 +106,7 @@
 						icon: 'none'
 					})
 				})
-			}
+			},true),
 		
 		},
 		onLoad() {

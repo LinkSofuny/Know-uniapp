@@ -6,7 +6,7 @@
 		<view class="flex-1 text-muted flex align-center justify-center">
 			<slot></slot>
 		</view>
-		<text v-if="rightIcon" class="iconfont iconjinru flex align-center justify-center mr-2 text-muted"></text>
+		<text v-if="rightIcon" class=" flex align-center justify-center mr-2 text-muted"></text>
 	</view>
 </template>
 

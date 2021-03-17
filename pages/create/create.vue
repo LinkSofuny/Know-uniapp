@@ -17,7 +17,7 @@
 		
 		<picker mode="selector" :range="range" @change="selectorChange">
 			<from-item label="分类" rightIcon>
-				<input type="text" v-model="form.category" placeholder="请选择分类" placeholder-class="text-light-muted " class="w-100 " disabled />
+				<input type="text" v-model="categoryTitle" placeholder="请选择分类" placeholder-class="text-light-muted " class="w-100 " disabled />
 			</from-item>
 		</picker>
 		
@@ -40,13 +40,15 @@
 	export default {
 		data() {
 			return {
+				id: 0,
 				form:{
 					cover: "",
 					title: "",
-					category: "",
+					category_id: null,
 					desc: "",
 				},
-				range: ["分类1", "分类2", "分类3", "分类4", ]
+				category: [],
+				range: ['请选择分类']
 			}
 		},
 		methods: {
@@ -55,18 +57,68 @@
 				    count: 1, //默认9
 				    sizeType: ['compressed'], //可以指定是原图还是压缩图，默认二者都有
 				    success: (res) => {
-						this.form.cover = res.tempFilePaths[0]
+						this.$H.upload('/upload', {
+							filePath: res.tempFilePaths[0]
+						}).then(res => {
+							this.form.cover = res.url
+							uni.showToast({
+								title: '上传成功',
+								icon: 'none'
+							})
+						}).catch(err => {
+							console.log(err)
+						})
+						// this.form.cover = 
 				    }
+					
 				});
 			},
 			selectorChange(e) {
-				this.form.category = e.detail.value
+				this.form.category_id = e.detail.value
 			},
 			submitWork() {
-				console.log('1')
+				let url = this.id === 0 ? '/video' : `/video/${this.id}`
+				let msg = this.id === 0 ? '发布' : '修改'
+				this.$H.post(url,this.form, {
+					 token:true})
+				uni.showToast({
+					title: `${msg}成功`,
+					icon: 'none'
+				})
+				uni.navigateBack({
+					delta: 1
+				})
 			}
 		},
-		
+		onLoad(e){
+			// 分类列表
+			this.$H.get('/category').then(res=> {
+				this.category = res
+				let arr = this.category.map(item => item.title)
+				this.range.push(...arr) 
+			})
+			if(e.data) {
+				let item = JSON.parse(decodeURIComponent(e.data))
+				this.form = {
+					cover: item.cover,
+					category_id: item.category_id,
+					desc: item.desc,
+					title: item.title
+				}
+				this.id = item.id
+			}
+		},
+		onNavigationBarButtonTap() {
+			this.submitWork()
+		},
+		computed: {
+			categoryTitle() {
+				let index =  this.category.findIndex(item => item.id === this.form.category_id)
+				if(index === -1) return ''
+				return this.category[index].title
+			
+			}
+		},
 		components: {
 			fromItem,
 			bigButton

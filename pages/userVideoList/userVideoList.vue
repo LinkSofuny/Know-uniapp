@@ -62,6 +62,7 @@
 		
 		data() {
 			return {
+				id: 0,
 				list: [
 					{
 					video: "",
@@ -127,11 +128,31 @@
 			},
 			openEdit(item) {
 				item.isEdit = true
+
+			},
+			getData(){
+				this.$H.get(`/video_detail/${this.id}`).then(res => {
+					this.list = res
+				})
 			}
 		},
 		components: {
 			fromItem,
 			bigButton
+		},
+		onLoad(e){
+			if (!e.id) {
+				uni.navigateBack({
+					delta: 1
+				})
+				return uni.showToast({
+					title: '非法参数',
+					icon: 'none'
+				})
+			}
+			
+			this.id = e.id
+			this.getData()
 		}
 	}
 </script>
