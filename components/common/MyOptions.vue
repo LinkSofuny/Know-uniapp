@@ -4,7 +4,9 @@
 	hover-class="bg-light"
 	@click="$emit('click')"
 	>
-		<text v-if="icon"  :class="icon" class="iconfont font"></text>
+		<slot name="icon">
+			<text v-if="icon"  :class="icon" class="iconfont font"></text>
+		</slot>
 		<view class="ml-2 font-md font-weight-light mr-auto">
 			{{ title }}
 		</view>

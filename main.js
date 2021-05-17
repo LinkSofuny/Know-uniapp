@@ -8,7 +8,18 @@ Vue.config.productionTip = false
 Vue.prototype.$H = $H
 Vue.prototype.$store = store
 Vue.prototype.$_ = utils
-
+Vue.prototype.authJump = (options) => {
+	if (!store.state.token) {
+		uni.showToast({
+			title:'登录',
+			icon: 'none'
+		})
+		return uni.navigateTo({
+			url: '/pages/login/login'
+		})
+	}
+	uni.navigateTo(options)
+}
 App.mpType = 'app'
 
 const app = new Vue({

@@ -4,7 +4,7 @@
 		<navigator v-if="!user" url="../login/login">
 			<view class="p-3 flex align-center">
 				<image 
-				src="../../static/demo/6.jpg" 
+				:src=" userInfo ? userInfo.avatarUrl : '../../static/demo/6.jpg'" 
 				style="height: 120rpx;width: 120rpx;"
 				class="rounded-circle bg-light flex-shrink"></image>
 				<view class="flex flex-column ml-3 flex-1">
@@ -13,10 +13,10 @@
 			</view>
 		</navigator>
 		<!-- 登录后 -->
-		<navigator v-else url="../userPage/userPage">
+		<navigator v-else :url="'../userPage/userPage?user_id=' + user.id">
 			<view class="p-3 flex align-center">
 				<image 
-				:src="user.avatar || '../../static/demo/6.jpg'" 
+				:src=" userInfo ? userInfo.avatarUrl : '../../static/demo/6.jpg'"  
 				style="height: 120rpx;width: 120rpx;"
 				class="rounded-circle bg-light flex-shrink"></image>
 				<view class="flex flex-column ml-3 flex-1">
@@ -28,6 +28,7 @@
 						{{user.desc || '这个人很懒什么都没有留下'}}
 					</text>
 				</view>
+				<text @click.stop="goUserSet" class="go-userSet iconfont iconshezhi"></text>
 			</view>
 		</navigator>
 		<view class="f-divider"></view>
@@ -35,8 +36,8 @@
 		<!-- 选项部分 -->
 		<my-options @click="navigateTo('userWork')" icon="iconshipin" title="我的作品" :showRightIcon="false" :rightText="videoCount + ' 个'"></my-options>
 		<my-options @click="navigateTo('userFava')" icon="iconshoucang1" title="我的收藏" ></my-options>
-		<my-options  icon="iconguanzhu" title="关注" :rightText="followCount"></my-options>
-		<my-options  icon="iconlishi" title="历史记录" ></my-options>
+		<my-options @click="navigateTo('user-follow')" icon="iconguanzhu" title="关注" :rightText="followCount"></my-options>
+		<my-options @click="navigateTo('user-history')"  icon="iconlishi" title="历史记录" ></my-options>
 		<view class="f-divider"></view>
 		<!-- 投稿 -->
 		<view class="py-3 px-2">
@@ -85,18 +86,23 @@
 			return {
 				userInfo: {},
 				followCount: 0,
-				videoCount: 0
+				videoCount: 0,
+				userInfo: {}
 			}
 		},
 		methods: {
 			...mapMutations('popupStatus', ['isShow', 'noShow']),
 			// 选择投稿类型
 			navigateTo(path) {
-				uni.navigateTo({
+				this.authJump({
 					url: '/pages/' + path + '/' + path ,
 				})
 			},
-			stop(){},
+			goUserSet () {
+				uni.navigateTo({
+					url: '../userSet/userSet'
+				});
+			}
 
 		},
 		onShow(){
@@ -107,6 +113,11 @@
 				}).then(res => {
 					this.followCount = res.followCount 
 					this.videoCount = res.videoCount 
+				})
+				uni.getUserInfo({
+					success: res => {
+						this.userInfo = res.userInfo
+					}
 				})
 		},
 		computed: {
@@ -140,5 +151,9 @@
 }
 .loginBtn::after {
 	border: none;
+}
+.go-userSet {
+	font-size: 75rpx;	
+	color: #808080;
 }
 </style>

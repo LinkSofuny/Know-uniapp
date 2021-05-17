@@ -5,7 +5,7 @@
 			<view class="flex align-center position-absolute px-2 bottom-0 left-0 right-0 rounded-bottom-lg swiper-bottom-info" >
 				<view class="flex-8 text-ellipsis">
 					<!-- title -->
-					{{info[current].title}}
+					{{info[current] ? info[current].title : '暂无描述'}}
 				</view>
 				<view class="flex-2 flex justify-end" >
 					<!-- 可以有两个class(其中一个未绑定) => 判断的类名不用加引号 只在外部添加即可 -->

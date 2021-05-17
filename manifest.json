@@ -68,19 +68,27 @@
     "uniStatistics" : {
         "enable" : false
     },
-	    "h5" : {
-	        "devServer" : {
-	            "https" : false,
-	            "proxy" : {
-	                "/api" : {
-	                    "target" : "http://localhost:7001/",
-	                    "changeOrigin" : true,
-	                    "ws" : true,
-	                    "pathRewrite" : {
-	                        "^/api" : ""
-	                    }
-	                }
-	            }
-	        }
-	    }
+    "h5" : {
+        "devServer" : {
+            "https" : false,
+            "proxy" : {
+                "/api" : {
+                    "target" : "http://linkknow.xyz/",
+                    "changeOrigin" : true,
+                    "ws" : true,
+                    "pathRewrite" : {
+                        "^/api" : ""
+                    }
+                }
+            },
+            "port" : 8082
+        },
+        "template" : "h5.html",
+        "title" : "视频学习网",
+        "optimization" : {
+            "treeShaking" : {
+                "enable" : true
+            }
+        }
+    }
 }

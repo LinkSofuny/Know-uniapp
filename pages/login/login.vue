@@ -80,9 +80,7 @@
 			changeType() {
 				this.type = this.type === 'login' ? 'reg' : 'login'
 				this.form = {
-					username: "",
-					password: '',
-					repassword: '',
+					
 				}
 			},
 			backPage() {
@@ -90,8 +88,8 @@
 					delta: 1
 				})
 			},
-			submit: _.debounce(function () {
-				let msg = this.type === 'login' ? '注册' : '登录'
+			submit: function () {
+				let msg = this.type === 'login' ? '登录' : '注册'
 				this.$H.post('/'+ this.type, this.form).then(res => {
 					if(this.type === 'reg'){
 						this.changeType()
@@ -106,8 +104,7 @@
 						icon: 'none'
 					})
 				})
-			},true),
-		
+			}
 		},
 		onLoad() {
 			this.statusBarHeight = uni.getSystemInfoSync().statusBarHeight

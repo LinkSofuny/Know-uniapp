@@ -22,8 +22,9 @@
 			}
 		},
 		methods: {
+			
 			getData(){
-				let url = `http://127.0.0.1:7001/category/${this.category_id}/video/${this.page}`
+				let url = `/category/${this.category_id}/video/${this.page}`
 				
 				let page = this.page
 				return this.$H.get(url).then(res => {

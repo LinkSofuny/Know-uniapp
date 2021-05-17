@@ -3,7 +3,7 @@ export default {
     // 全局配置
     common:{
 		// #ifndef H5
-		baseUrl:"http://127.0.0.1:7001",
+		baseUrl:"http://linkknow.xyz",
 		// #endif
 		// #ifdef H5
 		baseUrl: '/api',
@@ -89,9 +89,9 @@ export default {
                             });
                         }
 						// token不合法，直接退出登录
-						// if(result.data.data === 'Token 令牌不合法!'){
-						// 	$store.dispatch('logout')
-						// }
+						if(result.data.data === 'Token 令牌不合法!'){
+							$store.dispatch('logout')
+						}
                         return false
                     }
                     // 其他验证...
@@ -100,6 +100,7 @@ export default {
                     res(data)
                 },
                 fail: (error) => {
+					console.log(options.url);
                     uni.showToast({ title: error.errMsg || '请求失败', icon: 'none' });
                     return rej(error)
                 }

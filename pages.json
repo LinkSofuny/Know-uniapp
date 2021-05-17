@@ -112,7 +112,8 @@
             "path" : "pages/userFava/userFava",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "我的收藏"
+                "navigationBarTitleText": "我的收藏",
+				"enablePullDownRefresh": true
             }
             
         }
@@ -200,6 +201,61 @@
                 "enablePullDownRefresh": true
             }
             
+        }
+        ,{
+            "path" : "pages/user-follow/user-follow",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的关注列表",
+                "enablePullDownRefresh": true
+            }
+            
+        }
+        ,{
+            "path" : "pages/user-history/user-history",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "历史记录",
+                "enablePullDownRefresh": true,
+				"app-plus":  {
+					"titleNView": {
+						"buttons": [{
+							"float":"right",
+							"text":"清除",
+							"fontSize":"14px",
+							"color":"#959fA0",
+							"colorPressed":"#333"
+						}]
+					}
+				}
+            }
+            
+        }
+        ,{
+            "path" : "pages/search/search",
+            "style": {
+            	"navigationBarTitleText": "首页",
+            	"app-plus": {
+            		"titleNView": {
+            			"padding": "8px",
+            			"searchInput": {
+            				"align": "left",
+            				"backgroundColor":"#F6F7F8",
+            				"placeholder":"输入点什么吧",
+            				"disabled":false,
+            				"borderRadius":"15px",
+            				"placeholderColor":"#959fA0"
+            			},
+            			"buttons":[{
+            				"float":"right",
+            				"color":"#959fA0",
+            				"text": "搜索",
+            				"fontSize":"16px",
+            				"colorPressed":"#87ceeb"
+            			}]
+            		}
+            	}
+            }
         }
     ],
 	"globalStyle": {

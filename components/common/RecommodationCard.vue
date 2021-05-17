@@ -5,8 +5,6 @@
 			<view 
 			v-if="showRefresh" @click="$emit('refresh')"
 			class="flex align-center justify-center py-2 text-main " hover-class="text-main-hover">
-				<text class="iconfont iconshuaxin pr-1"></text>
-				换一批
 			</view>
 		</view>
 		<view class="f-divider" v-if="showGap" >
