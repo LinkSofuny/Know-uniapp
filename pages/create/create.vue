@@ -57,10 +57,13 @@
 				    count: 1, //默认9
 				    sizeType: ['compressed'], //可以指定是原图还是压缩图，默认二者都有
 				    success: (res) => {
+						console.log(res);
 						this.$H.upload('/upload', {
 							filePath: res.tempFilePaths[0]
 						}).then(res => {
-							this.form.cover = res.url
+							this.form.cover = res.url.replace('localhost', 'linkknow.xyz')
+							
+							
 							uni.showToast({
 								title: '上传成功',
 								icon: 'none'

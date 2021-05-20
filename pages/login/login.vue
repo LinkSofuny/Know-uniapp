@@ -21,13 +21,13 @@
 			placeholder="手机号/用户名/邮箱" 
 			v-model="form.username"/>
 			<input 
-			type="text" 
+			type="password" 
 			class="uni-input mb-4 bg-light rounded" 
 			placeholder="请输入密码"
 			v-model="form.password"/>
 			<input 
 			v-if="type === 'reg'" 
-			type="text" 
+			type="password" 
 			class="uni-input mb-4 bg-light rounded" 
 			placeholder="请确认密码"
 			v-model="form.repassword"/>
@@ -73,24 +73,35 @@
 					username: "",
 					password: '',
 					repassword: '',
-				}
+				},
+				userInfo: {}
 			}
 		},
 		methods: {
 			changeType() {
 				this.type = this.type === 'login' ? 'reg' : 'login'
-				this.form = {
-					
-				}
+				this.form = {}
 			},
 			backPage() {
 				uni.navigateBack({
 					delta: 1
 				})
 			},
+			getUserInfo () {
+				uni.getUserInfo({
+					success: res => {
+						this.userInfo = res.userInfo
+						console.log(res);
+					}
+				})
+			},
 			submit: function () {
+				let avatar = this.userInfo.avatarUrl
 				let msg = this.type === 'login' ? '登录' : '注册'
-				this.$H.post('/'+ this.type, this.form).then(res => {
+				this.$H.post('/'+ this.type,  {
+					avatar,
+					...this.form
+				}).then(res => {
 					if(this.type === 'reg'){
 						this.changeType()
 					} else {
@@ -107,6 +118,7 @@
 			}
 		},
 		onLoad() {
+			this.getUserInfo()
 			this.statusBarHeight = uni.getSystemInfoSync().statusBarHeight
 		},
 		components: {
